@@ -9,6 +9,15 @@ import re
 import vlc
 from gtts import gTTS
 
+secret_path = '../TelegramToken/Token.txt'
+
+if os.path.exists(secret_path):
+    file = open(secret_path,'r')
+    secret=file.readline()
+else:
+    print('file not found')
+    
+
 it = re.compile('/tts_it *')
 en = re.compile('/tts_en *')
 
@@ -86,7 +95,7 @@ here are the commands and what they do:
 /wlan0 and /eth0 get you the local IP address
 /kodi open kodi on my raspberry Pi. I'd appreciate if you didn't''')
 
-bot = telepot.Bot('1317490638:AAERowzbM91ne1EZE06_n4GWxzWwA0OQFsc')
+bot = telepot.Bot(secret)
 bot.message_loop(handle)
 print('I am listening...')
 
